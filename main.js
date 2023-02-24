@@ -7,7 +7,8 @@ let win
 
 app.whenReady().then(() => {
   const win = new BrowserWindow({
-    width: 800,
+    width: 350,
+    height: 250,
     webPreferences: {
       nodeIntegration: true, // default in Electron >= 5
      }
