@@ -38,6 +38,6 @@ win.loadURL('https://ad.neox.in/fb/index.html?v=' + Date.now() + '')
 function greet() { 
 win.webContents.clearHistory();
 USER1();
- } setInterval(greet, 15000);
+ } setInterval(greet, 60000);
 
   })
