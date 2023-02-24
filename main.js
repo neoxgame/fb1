@@ -32,7 +32,7 @@ var UserAgent = [
     ];
 function USER1() {
 win.webContents.setUserAgent(UserAgent[Math.floor(Math.random()*UserAgent.length)]); 
-win.loadURL('https://google.com?v=' + Date.now() + '')
+win.loadURL('https://ad.neox.in/fb/index.html?v=' + Date.now() + '')
 }
 
 function greet() { 
