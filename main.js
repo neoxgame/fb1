@@ -11,6 +11,8 @@ app.whenReady().then(() => {
     height: 250,
     webPreferences: {
       nodeIntegration: true, // default in Electron >= 5
+      preload: path.join(__dirname, 'preload.js')
+      
      }
     
   })
