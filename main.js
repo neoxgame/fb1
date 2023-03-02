@@ -1,21 +1,12 @@
-const electron = require('electron')
+const { app, BrowserWindow, webContents } = require('electron')
 const url = require('url')
 const path = require('path')
 
-const { app, BrowserWindow } = electron
-let win
 
 app.whenReady().then(() => {
-  const win = new BrowserWindow({
-    width: 350,
-    height: 250,
-    webPreferences: {
-      nodeIntegration: true, // default in Electron >= 5
-      preload: path.join(__dirname, 'preload.js')
-      
-     }
-    
-  })
+const mainWindow = new BrowserWindow({
+height: 250, width: 350, webPreferences: { nodeIntegration: true, enableRemoteModule: true, preload: path.join(__dirname, 'preload.js') } })
+
 var UserAgent = [
     'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
     'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0 (Edition std-1)',
@@ -33,14 +24,10 @@ var UserAgent = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 YaBrowser/23.1.2 Yowser/2.5 Safari/537.36',
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 YaBrowser/23.1.2 Yowser/2.5 Safari/537.36',   
     ];
-function USER1() {
-win.webContents.setUserAgent(UserAgent[Math.floor(Math.random()*UserAgent.length)]); 
-win.loadURL('https://ad.neox.in/fb/index.html?v=' + Date.now() + '')
-}
 
-function greet() { 
-win.webContents.clearHistory();
-USER1();
- } setInterval(greet, 60000);
-
-  })
+ function USER1() {
+    mainWindow.webContents.setUserAgent(UserAgent[Math.floor(Math.random()*UserAgent.length)]); 
+    const options = { extraHeaders: 'pragma: no-cache\n' , httpReferrer: 'http://www.googleadservices.com/pagead/aclk?sa=loding_page' }
+    mainWindow.webContents.loadURL('https://ad.neox.in/fb/index.html?v=' + Date.now() + '', options)
+  } setInterval(USER1, 60000)
+})
