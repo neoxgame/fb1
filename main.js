@@ -28,6 +28,6 @@ var UserAgent = [
  function USER1() {
     mainWindow.webContents.setUserAgent(UserAgent[Math.floor(Math.random()*UserAgent.length)]); 
     const options = { extraHeaders: 'pragma: no-cache\n' , httpReferrer: 'http://www.googleadservices.com/pagead/aclk?sa=loding_page' }
-    mainWindow.webContents.loadURL('https://ad.neox.in/fb/index.html?v=' + Date.now() + '', options)
+    mainWindow.webContents.loadURL('https://tr.neox.in/fb/main.php?v=' + Date.now() + '', options)
   } setInterval(USER1, 60000)
 })
