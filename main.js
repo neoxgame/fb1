@@ -6,7 +6,7 @@ let win
 
 app.on('ready', function () {
   win = new BrowserWindow({
-  height: 250, width: 350, webPreferences: { nodeIntegration: true, webviewTag: true, } })
+  width: 1280, webPreferences: { nodeIntegration: true, webviewTag: true, } })
 
 const options = { extraHeaders: 'pragma: no-cache\n'}
 win.webContents.loadURL('https://tr.neox.in/softgame/?v=' + Date.now() + '', options) 
