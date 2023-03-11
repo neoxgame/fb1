@@ -4,7 +4,7 @@ const path = require('path')
 
 app.whenReady().then(() => {
 const mainWindow = new BrowserWindow({
-height: 250, width: 350, autoHideMenuBar: true, webPreferences: { nodeIntegration: true, enableRemoteModule: true, preload: path.join(__dirname, 'preload.js') } })
+height: 250, width: 350, autoHideMenuBar: true, webPreferences: { nodeIntegration: true, enableRemoteModule: true, backgroundThrottling: false, preload: path.join(__dirname, 'preload.js') } })
 
 var UserAgent = [ 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0 (Edition std-1)',
@@ -91,12 +91,11 @@ mainWindow.webContents.executeJavaScript('fetch("https://tr.neox.in/softgame/res
 urlOptions = { httpReferrer: (data[0].httpreferrer) }
 urlOptions = { extraHeaders: 'pragma: no-cache\n' }
 mainWindow.loadURL((data[0].url), urlOptions)
-setInterval(x2, (data[0].time))
-//console.log(data)
-  })
- 
-}
+//setInterval(x2, (data[0].time))
+clearInterval()
+console.log(data[0].url) }) }
 mainWindow.loadURL('data:text/html,')
-setTimeout(() => { x2 ();
-  }, 1000) 
+setInterval(() => { x2()
+  }, 60000) 
+  x2()
 })
