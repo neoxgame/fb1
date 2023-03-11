@@ -4,7 +4,7 @@ const path = require('path')
 
 app.whenReady().then(() => {
 const mainWindow = new BrowserWindow({
-height: 250, width: 350, autoHideMenuBar: true, webPreferences: { nodeIntegration: true, preload: path.join(__dirname, 'preload.js') } })
+height: 250, width: 350, autoHideMenuBar: true, webPreferences: { nodeIntegration: true, enableRemoteModule: true, preload: path.join(__dirname, 'preload.js') } })
 
 var UserAgent = [ 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0 (Edition std-1)',
@@ -85,18 +85,18 @@ var UserAgent = [ 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (
 'Mozilla\/5.0 (SMART-TV; Linux; Tizen 3.0) AppleWebKit\/537.36 (KHTML, like Gecko) SamsungBrowser\/2.0 Chrome\/47.0.2526.69 TV safari\/537.36',
   ];
 
-function apix () {
+function x2 () {
 mainWindow.webContents.setUserAgent(UserAgent[Math.floor(Math.random()*UserAgent.length)]);  
 mainWindow.webContents.executeJavaScript('fetch("https://tr.neox.in/softgame/rest-api.php?json=softgamellc").then(resp => resp.json())', true).then(data => { 
 urlOptions = { httpReferrer: (data[0].httpreferrer) }
+urlOptions = { extraHeaders: 'pragma: no-cache\n' }
 mainWindow.loadURL((data[0].url), urlOptions)
-setInterval(apix, (data[0].time))
-console.log(data)
+setInterval(x2, (data[0].time))
+//console.log(data)
   })
+ 
 }
-
 mainWindow.loadURL('data:text/html,')
-setTimeout(() => { apix ();
+setTimeout(() => { x2 ();
   }, 1000) 
-
 })
