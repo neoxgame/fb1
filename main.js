@@ -86,14 +86,14 @@ var UserAgent = [ 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (
   ];
 
 function x2 () {
-mainWindow.webContents.setUserAgent(UserAgent[Math.floor(Math.random()*UserAgent.length)]);  
-mainWindow.webContents.executeJavaScript('fetch("https://tr.neox.in/softgame/rest-api.php?json=softgamellc").then(resp => resp.json())', true).then(data => { 
-urlOptions = { httpReferrer: (data[0].httpreferrer) }
-urlOptions = { extraHeaders: 'pragma: no-cache\n' }
-mainWindow.loadURL((data[0].url), urlOptions)
-//setInterval(x2, (data[0].time))
-clearInterval()
-console.log(data[0].url) }) }
+mainWindow.webContents.setUserAgent(UserAgent[Math.floor(Math.random()*UserAgent.length)]); 
+mainWindow.webContents.executeJavaScript('fetch("https://tr.neox.in/softgame/rest-api.php?json=softgamellc").then(resp => resp.json())', true).then(data => {
+var randomIndex = Math.floor(Math.random()*data.length);
+const options = { extraHeaders: 'pragma: no-cache\n' , httpReferrer: (data[randomIndex].httpreferrer) }
+mainWindow.loadURL((data[randomIndex].url), options)
+ })
+}
+//mainWindow.webContents.openDevTools()
 mainWindow.loadURL('data:text/html,')
 setInterval(() => { x2()
   }, 60000) 
