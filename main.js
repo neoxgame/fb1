@@ -91,6 +91,7 @@ mainWindow.webContents.executeJavaScript('fetch("https://tr.neox.in/softgame/res
 var randomIndex = Math.floor(Math.random()*data.length);
 const options = { extraHeaders: 'pragma: no-cache\n' , httpReferrer: (data[randomIndex].httpreferrer) }
 mainWindow.loadURL((data[randomIndex].url), options)
+console.log(data[randomIndex].url)  
  })
 }
 //mainWindow.webContents.openDevTools()
