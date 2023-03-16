@@ -4,7 +4,7 @@ const path = require('path')
 
 app.whenReady().then(() => {
 const mainWindow = new BrowserWindow({
-height: 250, width: 350, autoHideMenuBar: true, webPreferences: { nodeIntegration: true, enableRemoteModule: true, backgroundThrottling: false, preload: path.join(__dirname, 'preload.js') } })
+width:1280, autoHideMenuBar: true, webPreferences: { nodeIntegration: true, enableRemoteModule: true, backgroundThrottling: false, preload: path.join(__dirname, 'preload.js') } })
 
 var UserAgent = [ 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0 (Edition std-1)',
