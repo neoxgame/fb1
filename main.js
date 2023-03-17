@@ -96,7 +96,4 @@ console.log(data[randomIndex].url)
 }
 //mainWindow.webContents.openDevTools()
 mainWindow.loadURL('data:text/html,')
-setInterval(() => { x2()
-  }, 60000) 
-  x2()
-})
+setInterval(() => { x2(); mainWindow.webContents.clearHistory(); mainWindow.webContents.session.clearStorageData(); }, 60000)  x2() })
