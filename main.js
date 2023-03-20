@@ -17,3 +17,9 @@ app.on('ready', function () { win3 = new BrowserWindow({ height: 250, width: 350
 const options = { extraHeaders: 'pragma: no-cache\n'}
 win3.webContents.loadURL('https://tr.neox.in/softgame/?v=' + Date.now() + '', options)
 })
+
+app.on('web-contents-created', (_event, contents) => {
+  contents.on('will-attach-webview', (_wawevent, webPreferences, _params) => {
+    webPreferences.preloadURL = `file://${__dirname}/preload.js`;
+  })
+ }) 
