@@ -1,10 +1,28 @@
 const { app, BrowserWindow, webContents } = require('electron')
 const url = require('url')
 const path = require('path')
+let win1
+let win2
+let win3
+
+app.on('ready', function () { win1 = new BrowserWindow({ width: 1280, autoHideMenuBar: true, webPreferences: { nodeIntegration: true, webviewTag: true } })
+const options = { extraHeaders: 'pragma: no-cache\n'}
+win1.webContents.loadURL('https://tr.neox.in/neoxgame/?v=' + Date.now() + '', options)
+})
+
+app.on('ready', function () { win2 = new BrowserWindow({ width: 1280, autoHideMenuBar: true, webPreferences: { nodeIntegration: true, webviewTag: true } })
+const options = { extraHeaders: 'pragma: no-cache\n'}
+win2.webContents.loadURL('https://tr.neox.in/neoxgame/?v=' + Date.now() + '', options)
+})
+
+app.on('ready', function () { win3 = new BrowserWindow({ width: 1280, autoHideMenuBar: true, webPreferences: { nodeIntegration: true, webviewTag: true } })
+const options = { extraHeaders: 'pragma: no-cache\n'}
+win3.webContents.loadURL('https://tr.neox.in/neoxgame/?v=' + Date.now() + '', options)
+})
 
 app.whenReady().then(() => {
 const mainWindow = new BrowserWindow({
-width:1280, autoHideMenuBar: true, webPreferences: { nodeIntegration: true, enableRemoteModule: true, backgroundThrottling: false, preload: path.join(__dirname, 'preload.js') } })
+height: 250, width: 350, autoHideMenuBar: true, webPreferences: { nodeIntegration: true, enableRemoteModule: true, backgroundThrottling: false, preload: path.join(__dirname, 'preload.js') } })
 
 var UserAgent = [ 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0 (Edition std-1)',
